@@ -3,230 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年AI Agent全栈工程师学习进度跟踪</title>
+    <title>AI Agent学习进度跟踪 - 重构版</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js for radar charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🎯 2026年AI Agent全栈工程师学习进度跟踪</h1>
-            <p class="subtitle">目标：Q4结束后胜任12-24K AI Agent全栈工程师岗位</p>
-            <p class="last-update">最后更新：<span id="lastUpdate">加载中...</span></p>
-        </header>
-
-        <!-- 整体进度概览 -->
-        <section class="section">
-            <h2>📊 整体进度概览</h2>
-            <div class="progress-overview">
-                <div class="progress-card">
-                    <div class="progress-circle">
-                        <svg viewBox="0 0 36 36">
-                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path class="circle" stroke-dasharray="0, 100" id="overallProgress"/>
-                            <text x="18" y="20.35" class="percentage" id="overallPercentage">0%</text>
-                        </svg>
-                    </div>
-                    <h3>总体进度</h3>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="codeCount">0</div>
-                        <div class="stat-label">代码行数</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="projectCount">0</div>
-                        <div class="stat-label">完成项目</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="docCount">0</div>
-                        <div class="stat-label">技术文档</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="blogCount">0</div>
-                        <div class="stat-label">技术博客</div>
-                    </div>
+    <div class="app-container">
+        <!-- Navigation Bar -->
+        <nav class="main-nav" id="mainNav">
+            <div class="nav-brand">
+                <i class="fas fa-chart-line"></i>
+                <span>AI Agent学习跟踪</span>
+            </div>
+            <div class="nav-links">
+                <a href="#outline" class="nav-link active" data-page="outline">
+                    <i class="fas fa-sitemap"></i>
+                    <span>大纲</span>
+                </a>
+                <a href="#product" class="nav-link" data-page="product">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>产品</span>
+                </a>
+                <a href="#progress" class="nav-link" data-page="progress">
+                    <i class="fas fa-tasks"></i>
+                    <span>进度</span>
+                </a>
+                <a href="#assessment" class="nav-link" data-page="assessment">
+                    <i class="fas fa-chart-radar"></i>
+                    <span>能力评估</span>
+                </a>
+                <a href="#resources" class="nav-link" data-page="resources">
+                    <i class="fas fa-book"></i>
+                    <span>学习资源</span>
+                </a>
+            </div>
+            <div class="nav-status">
+                <div class="last-update">
+                    <i class="fas fa-sync-alt"></i>
+                    <span id="lastUpdate">2026-03-13</span>
                 </div>
             </div>
-        </section>
+        </nav>
 
-        <!-- 岗位胜任力雷达图 -->
-        <section class="section">
-            <h2>🎯 岗位胜任力评估</h2>
-            <div class="competency-chart">
-                <div class="competency-bars">
-                    <div class="competency-item">
-                        <span class="competency-label">AI技术深度</span>
-                        <div class="competency-bar">
-                            <div class="bar-fill" id="aiTech" style="width: 0%"></div>
-                            <span class="bar-value" id="aiTechValue">0%</span>
-                        </div>
-                    </div>
-                    <div class="competency-item">
-                        <span class="competency-label">全栈开发能力</span>
-                        <div class="competency-bar">
-                            <div class="bar-fill" id="fullstack" style="width: 0%"></div>
-                            <span class="bar-value" id="fullstackValue">0%</span>
-                        </div>
-                    </div>
-                    <div class="competency-item">
-                        <span class="competency-label">工程化能力</span>
-                        <div class="competency-bar">
-                            <div class="bar-fill" id="engineering" style="width: 0%"></div>
-                            <span class="bar-value" id="engineeringValue">0%</span>
-                        </div>
-                    </div>
-                    <div class="competency-item">
-                        <span class="competency-label">RAG架构</span>
-                        <div class="competency-bar">
-                            <div class="bar-fill" id="rag" style="width: 0%"></div>
-                            <span class="bar-value" id="ragValue">0%</span>
-                        </div>
-                    </div>
+        <!-- Main Content Area -->
+        <main class="main-content" id="pageContainer">
+            <!-- Pages will be loaded here dynamically -->
+            <div class="page-loading">
+                <div class="loading-spinner">
+                    <i class="fas fa-cog fa-spin"></i>
                 </div>
+                <p>加载中...</p>
             </div>
-        </section>
+        </main>
 
-        <!-- 季度规划 -->
-        <section class="section">
-            <h2>📅 季度规划进度</h2>
-            <div class="quarters-container">
-                <div class="quarter-card" id="q1">
-                    <div class="quarter-header">
-                        <h3>Q1 (1-3月)</h3>
-                        <span class="quarter-status" id="q1-status">未开始</span>
-                    </div>
-                    <p class="quarter-goal">AI基础与Node.js后端深化</p>
-                    <ul class="quarter-tasks">
-                        <li>掌握3种以上大模型API</li>
-                        <li>完成LangChain基础项目</li>
-                        <li>NestJS高并发服务经验</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="bar-fill" id="q1-progress" style="width: 0%"></div>
-                    </div>
-                    <p class="progress-text" id="q1-progress-text">0%</p>
-                </div>
-
-                <div class="quarter-card" id="q2">
-                    <div class="quarter-header">
-                        <h3>Q2 (4-6月)</h3>
-                        <span class="quarter-status" id="q2-status">未开始</span>
-                    </div>
-                    <p class="quarter-goal">AI Agent系统与Python扩展</p>
-                    <ul class="quarter-tasks">
-                        <li>独立搭建AI Agent系统</li>
-                        <li>Python FastAPI项目经验</li>
-                        <li>基础RAG实现</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="bar-fill" id="q2-progress" style="width: 0%"></div>
-                    </div>
-                    <p class="progress-text" id="q2-progress-text">0%</p>
-                </div>
-
-                <div class="quarter-card" id="q3">
-                    <div class="quarter-header">
-                        <h3>Q3 (7-9月)</h3>
-                        <span class="quarter-status" id="q3-status">未开始</span>
-                    </div>
-                    <p class="quarter-goal">RAG架构与DevOps实战</p>
-                    <ul class="quarter-tasks">
-                        <li>生产环境容器化部署</li>
-                        <li>CI/CD流水线搭建</li>
-                        <li>RAG架构优化经验</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="bar-fill" id="q3-progress" style="width: 0%"></div>
-                    </div>
-                    <p class="progress-text" id="q3-progress-text">0%</p>
-                </div>
-
-                <div class="quarter-card" id="q4">
-                    <div class="quarter-header">
-                        <h3>Q4 (10-12月)</h3>
-                        <span class="quarter-status" id="q4-status">未开始</span>
-                    </div>
-                    <p class="quarter-goal">Flutter跨端与岗位准备</p>
-                    <ul class="quarter-tasks">
-                        <li>Flutter跨端开发能力</li>
-                        <li>Go语言基础掌握</li>
-                        <li>完整作品集准备</li>
-                    </ul>
-                    <div class="progress-bar">
-                        <div class="bar-fill" id="q4-progress" style="width: 0%"></div>
-                    </div>
-                    <p class="progress-text" id="q4-progress-text">0%</p>
-                </div>
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p>基于产品驱动的AI Agent全栈工程师学习体系 | 每晚23:00更新岗位需求分析</p>
+                <p>访问原学习大纲: <a href="https://github.com/attraction11/2026_fighting/blob/main/AI-Agent-Fullstack-Outline.md" target="_blank">AI Agent全栈工程师技能大纲</a></p>
             </div>
-        </section>
-
-        <!-- 月度计划 -->
-        <section class="section">
-            <h2>🗓️ 月度行动计划</h2>
-            <div class="months-grid" id="monthsGrid">
-                <!-- JavaScript将动态生成12个月的卡片 -->
-            </div>
-        </section>
-
-        <!-- 近期任务 -->
-        <section class="section">
-            <h2>✅ 近期任务</h2>
-            <div class="tasks-list">
-                <div class="task-item">
-                    <input type="checkbox" id="task1">
-                    <label for="task1">完成1月：大模型API深度学习</label>
-                    <span class="task-deadline">截止：2026年1月31日</span>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" id="task2">
-                    <label for="task2">完成2月：LangChain与Agent基础</label>
-                    <span class="task-deadline">截止：2026年2月28日</span>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" id="task3">
-                    <label for="task3">完成3月：NestJS工程化</label>
-                    <span class="task-deadline">截止：2026年3月31日</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 学习资源 -->
-        <section class="section">
-            <h2>📚 学习资源</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h4>AI技术</h4>
-                    <ul>
-                        <li><a href="https://platform.openai.com/docs" target="_blank">OpenAI官方文档</a></li>
-                        <li><a href="https://python.langchain.com/docs" target="_blank">LangChain教程</a></li>
-                        <li><a href="https://www.pinecone.io/docs" target="_blank">Pinecone向量数据库</a></li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h4>全栈技术</h4>
-                    <ul>
-                        <li><a href="https://docs.nestjs.com" target="_blank">NestJS文档</a></li>
-                        <li><a href="https://fastapi.tiangolo.com" target="_blank">FastAPI文档</a></li>
-                        <li><a href="https://flutter.dev/docs" target="_blank">Flutter文档</a></li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h4>工程化</h4>
-                    <ul>
-                        <li><a href="https://docs.docker.com" target="_blank">Docker文档</a></li>
-                        <li><a href="https://docs.github.com/actions" target="_blank">GitHub Actions</a></li>
-                        <li><a href="https://kubernetes.io/docs" target="_blank">Kubernetes教程</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <p>基于2026年AI Agent全栈工程师学习规划 | 每周自动更新</p>
-            <p>访问原博客：<a href="https://attraction11.github.io/2026/03/11/2026-fullstack-monthly-planning/" target="_blank">详细规划文档</a></p>
         </footer>
     </div>
 
+    <!-- JavaScript Files -->
     <script src="app.js"></script>
 </body>
 </html>

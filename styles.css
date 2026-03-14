@@ -761,3 +761,138 @@ body {
         font-size: 24px;
     }
 }
+
+/* ============================================
+   产品形态样式
+   ============================================ */
+
+.product-vision-section {
+    margin-bottom: var(--space-2xl);
+}
+
+.vision-card {
+    margin-bottom: var(--space-xl);
+}
+
+.vision-section {
+    margin-bottom: var(--space-xl);
+}
+
+.vision-section h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.vision-section h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: var(--space-md) 0 var(--space-sm) 0;
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.vision-item {
+    background: var(--bg-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    border-left: 4px solid var(--primary-color);
+}
+
+.vision-item ul {
+    margin: var(--space-sm) 0;
+    padding-left: var(--space-lg);
+}
+
+.vision-item li {
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+}
+
+.vision-item strong {
+    color: var(--primary-color);
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.role-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.role-card h5 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-md);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.role-card ul {
+    margin: 0;
+    padding-left: var(--space-md);
+}
+
+.role-card li {
+    margin-bottom: var(--space-xs);
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    font-size: 16px;
+}
+
+.iterations-section {
+    margin-top: var(--space-2xl);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .vision-item {
+        padding: var(--space-md);
+    }
+    
+    .role-card {
+        padding: var(--space-md);
+    }
+}
